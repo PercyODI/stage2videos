@@ -7,16 +7,36 @@
   "version" : "0.5",
   "editRate" : 30,
   "authoringClientName" :  {
-    "name" : "",
-    "platform" : "",
-    "version" : ""
+    "name" : "Camtasia Studio",
+    "platform" : "Windows",
+    "version" : "9.0"
   },
+  "sourceBin" : [
+    {
+      "id" : 1,
+      "src" : "C:\\Users\\pearse.hutson\\Documents\\Stage 2 Videos\\GitHub\\Creating a Github Account\\media\\Signing up for GitHub.trec",
+      "rect" : [0, 0, 1920, 1080],
+      "lastMod" : "20191004T192217",
+      "sourceTracks" : [
+        {
+          "range" : [0, 3684],
+          "type" : 0,
+          "editRate" : 30,
+          "trackRect" : [0, 0, 1920, 1080],
+          "sampleRate" : 29,
+          "bitDepth" : 0,
+          "numChannels" : 0,
+          "metaData" : "Signing up for GitHub.trec;"
+        }
+      ]
+    }
+  ],
   "timeline" : {
-    "id" : 1,
+    "id" : 2,
     "sceneTrack" : {
       "scenes" : [
         {
-          "duration" : 0.0,
+          "duration" : 122.8,
           "title" : "",
           "type" : "",
           "csml" : {
@@ -24,6 +44,44 @@
               {
                 "trackIndex" : 0,
                 "medias" : [
+                  {
+                    "id" : 3,
+                    "_type" : "ScreenVMFile",
+                    "src" : 1,
+                    "trackNumber" : 0,
+                    "attributes" : {
+                      "ident" : "Signing up for GitHub"
+                    },
+                    "parameters" : {
+                      "cursorScale" : {
+                        "type" : "double",
+                        "defaultValue" : 1.0,
+                        "interp" : "linr"
+                      },
+                      "cursorOpacity" : {
+                        "type" : "double",
+                        "defaultValue" : 1.0,
+                        "interp" : "linr"
+                      }
+                    },
+                    "effects" : [
+
+                    ],
+                    "start" : 0,
+                    "duration" : 3684,
+                    "mediaStart" : 0,
+                    "mediaDuration" : 3684,
+                    "scalar" : 1,
+                    "metadata" : {
+                      "AutoAppliedSmartFocus" : "False",
+                      "WinSubProjectDisplayName" : "",
+                      "clipSpeedAttribute" : false,
+                      "default-rotation2" : 0.0
+                    },
+                    "animationTracks" : {
+
+                    }
+                  }
                 ]
               },
               {
@@ -72,8 +130,14 @@
     "backgroundColor" : [ 0, 0, 0, 255]
   },
   "metadata" : {
-    "CanvasZoom" : 43,
+    "AutoSaveFile" : "C:\\Users\\pearse.hutson\\AppData\\Local\\TechSmith\\Camtasia Studio\\9.0\\Auto-Saves\\creating_a_github_account14e018d.autosave.tscproj",
+    "CanvasZoom" : 54,
+    "Date" : "2019-10-04 02:12:40 PM",
     "IsAutoSave" : "0",
+    "Language" : "ENU",
+    "ProfileName" : "",
+    "ProjectDimensionsChanged" : "1",
+    "Title" : "creating_a_github_account",
     "audioNarrationNotes" : "",
     "calloutStyle" : "Basic",
     "canvasDetached" : "False",

@@ -14,7 +14,7 @@ Here are the steps to creating your first GitHub Account. If you already have a 
 - Type an address for you account. I would recommend using a personal email you won't lose any time soon.
 - Pick a secure password (vucsOnlineP4ssword!)
 - Verify your humanity
-- Click Next: Select a Plan
+- Click Next: Select a Plan 
 - Choose the free plan
 - Fill out the welcome to GitHub page with whatever you want to share. GitHub will use this information to recommend repositories to you.
 - Verify your email address

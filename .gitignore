@@ -1,2 +1,6 @@
 *.trec
 *.mp4
+*.prproj
+
+**/media
+

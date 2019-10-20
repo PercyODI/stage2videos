@@ -1,6 +1,10 @@
 *.trec
 *.mp4
+*.wmv
+*.avi
 *.prproj
 
 **/media
-
+**/Adobe*
+**/bkup
+**/Camtasia

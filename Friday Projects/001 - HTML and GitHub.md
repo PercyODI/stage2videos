@@ -23,3 +23,6 @@ Because we are a completely agile tech shop, we believe in small, incremental de
 ## But how should it look?
 
 GrillBer is known for its grill based technology, and just like grills we don't need any fancy bells and whistles. We believe in a strong, functional product over a flashy UI. We will leave the design of the site up to you as the developers!
+
+Don't be fooled by sites like Uber or Instagram. Focus on making it functional, and we can incrementally increase the visual appeal of the application.
+

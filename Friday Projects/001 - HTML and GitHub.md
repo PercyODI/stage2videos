@@ -20,9 +20,37 @@ Just think of the possibilities!
 
 Because we are a completely agile tech shop, we believe in small, incremental development. Each week we will specify what requirements we need to be delivered. And to keep the feedback loop as short as possible, we want the code out in the world as soon as each feature is delivered!
 
-## But how should it look?
+## Video Resources
+> [001 - GitHub Account And Installation](https://youtu.be/E4PiV0Llmdc)
 
-GrillBer is known for its grill based technology, and just like grills we don't need any fancy bells and whistles. We believe in a strong, functional product over a flashy UI. We will leave the design of the site up to you as the developers!
+> [002 - Installing VS Code](https://youtu.be/5GJJxZJTDWk)
 
-Don't be fooled by sites like Uber or Instagram. Focus on making it functional, and we can incrementally increase the visual appeal of the application.
+> [003 - First Look at HTML](https://youtu.be/TBW4_q-L954)
+
+> [004 - More HTML Tags](https://youtu.be/E4PiV0Llmdc)
+
+> [005 - The Table Element](https://youtu.be/fz64qmOBqvU)
+
+> [006 - GitHub Pages](https://youtu.be/yz1tkxumEE4)
+
+<iframe width="804" height="452" src="https://www.youtube.com/embed/yz1tkxumEE4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+# Requirements
+For our first feature, we need the following requirements satisfied:
+
+1. An HTML file available to the public through GitHub pages
+1. A header with the name of our application: GrillBer
+1. A paragraph with a description of our application.
+1. A fake table of grill rental data. At a minimum, the table must contain the following data points:
+    - Brand and model of grill
+    - Username of the grill renter
+    - City this grill is located
+    - Cost per hour
+    - Delivery cost
+    - Grill rating (1 to 5)
+1. At least five entries in the fake table
+1. Two more sections, started with the next size down header
+    1. FAQ section with at least 3 questions and their answers (each question should be yet another size down header)
+    2. How and why section for potential grill renters
+1. Use at least two more HTML tags that were not used in the previous requirements. Might I suggest the hr tag?
 

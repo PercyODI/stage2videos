@@ -12,7 +12,7 @@ You will be provided with the instructional videos created by our in-house R&D s
 
 GrillBer is exactly like it sounds: Uber for grills! Let me set the scene. You live in a dense urban environment, in a studio apartment on the 20th floor of an apartment building, but you want to put on a cookout! You don't have the space or the budget to buy a high quality grill, but your local park doesn't provide public access grills for your cookout. What do you do?
 
-That's where GrillBer comes in! GrillBer is a deliver service for grill rentals! Grill owners can put up the specs and descriptions for their grills, and users can rent them for specific amounts of time! The grill owner will drop off the grill at the designated time and location, and then pick it back up when the user is finished!
+That's where GrillBer comes in! GrillBer is a rental and delivery service for grills! Grill renters can put up the specs and descriptions for their grills, and users can rent them for specific amounts of time! The grill owner will drop off the grill at the designated time and location, and then pick it back up when the user is finished!
 
 Just think of the possibilities! 
 
@@ -33,9 +33,7 @@ Because we are a completely agile tech shop, we believe in small, incremental de
 
 > [006 - GitHub Pages](https://youtu.be/yz1tkxumEE4)
 
-<iframe width="804" height="452" src="https://www.youtube.com/embed/yz1tkxumEE4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-# Requirements
+## Requirements
 For our first feature, we need the following requirements satisfied:
 
 1. An HTML file available to the public through GitHub pages
@@ -50,7 +48,9 @@ For our first feature, we need the following requirements satisfied:
     - Grill rating (1 to 5)
 1. At least five entries in the fake table
 1. Two more sections, started with the next size down header
-    1. FAQ section with at least 3 questions and their answers (each question should be yet another size down header)
-    2. How and why section for potential grill renters
+    - FAQ section with at least 3 questions and their answers (each question should be yet another size down header)
+    - How and why section for potential grill renters
 1. Use at least two more HTML tags that were not used in the previous requirements. Might I suggest the hr tag?
 
+## Additional Resources
+- [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started)

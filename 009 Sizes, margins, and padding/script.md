@@ -1,4 +1,4 @@
-Hello, and welcome to Stage Two: Sizes and Positions. In this video we will be using CSS to adjust the size and position of elements on the page. 
+Hello, and welcome to Stage Two: Sizes, margins, padding. In this video we will be using CSS to adjust the size and position of elements on the page. 
 
 We left off with this beautiful page, but I've been informed by marketing that the border is not...ideal. So the first thing I'll do is remove it. Good thing that's easy: all I have to do is remove the border declaration in the body rule-set. I'll save the file, and refresh. Ok, back to the way it was before.
 
@@ -30,3 +30,4 @@ Doesn't really look like anything changed. By itself, the div tag doesn't bring 
 
 Now, i'm going to write a rule-set using div as the selector. I'll set the margin property to the value 8px. Save and refresh. There! Because the paragraph and the table were wrapped in the div, they had the margin applied uniformly. 
 
+Now that we have the padding and sizes much better, I think we are ready for a new section in our HTML! I'll see you in the next video.

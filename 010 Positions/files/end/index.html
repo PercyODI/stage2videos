@@ -18,6 +18,7 @@
 
         p {
             text-align: justify;
+            white-space: normal;
         }
 
         table,
@@ -32,6 +33,13 @@
 
         div {
             margin: 8px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .half {
+            margin: 0px;
+            width: 50%;
         }
     </style>
 </head>
@@ -69,13 +77,13 @@
                 </tr>
             </tbody>
         </table>
-        <div>
+        <div class="half">
             <h3>Top Three Entries</h3>
             <p>1. Why are Rabbits so CUTE?!</p>
             <p>2. 12 Ways to write CSS</p>
             <p>3. You won't believe what happens next!</p>
         </div>
-        <div>
+        <div class="half">
             <h3>Top Three Users</h3>
             <p>1. Laura</p>
             <p>2. Garrett</p>

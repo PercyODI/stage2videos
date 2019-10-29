@@ -1,13 +1,3 @@
-- Intro to CSS
-- The Body and Head elements
-- Anatomy of a CSS rule-set (https://www.w3schools.com/css/css_syntax.asp)
-    - Selector
-    - Declaration
-        - Property 
-        - Value
-- Changing font color using CSS color text
-- Changing background color using Hex value
-
 Hello, and welcome to Stage Two: CSS Colors. In this video, we will start adding some colors to our pages to really make them pop!
 
 We left off with the header, the paragraph, and the table of diary entries! I have zoomed in a little bit so it is easier to see!
@@ -29,6 +19,8 @@ This new element is the head element. I will give myself a new line above the op
 That was easy! Let's save the page and refresh the page in Chrome. If all goes well, nothing changes! This is because we haven't changed anything about how the page should render. Secretly, Chrome has been wrapping our HTML in a body element anyways, so everything looks the same!
 
 Now for some styling. CSS rules go into a style element, so let's create that first. Inside the head element, I will create a style element. 
+
+https://www.w3schools.com/css/css_syntax.asp
 
 Now that we have all the elements we need for CSS styles, we can start to write some rules. There are two parts to every CSS rule: the selector and the declaration. Every declaration consists of a CSS property, and the value we want that property set to.
 

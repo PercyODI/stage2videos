@@ -4,6 +4,8 @@
 *.avi
 *.prproj
 
+Shared Media
+
 **/media
 **/Adobe*
 **/bkup

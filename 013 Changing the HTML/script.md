@@ -1,0 +1,11 @@
+- Now to add interactivity to the page
+- Add the script element to the head
+- I want to update the title to welcome a person by name to the page
+- Create a function that can be called
+    - submitUsername()
+    - no parameters, yet
+- Now I need to get the button to call the function (onclick)
+- Ok, back in the function, I want to change the inner text of the title.
+- Before that, I want to get the value the user typed into the text box.
+    - Agh! HTMLCollections
+- Ok, now that I have the HTML element, how do I get the value out

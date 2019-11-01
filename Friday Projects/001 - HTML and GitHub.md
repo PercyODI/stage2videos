@@ -27,7 +27,7 @@ Because we are a completely agile tech shop, we believe in small, incremental de
 
 > [003 - First Look at HTML](https://youtu.be/TBW4_q-L954)
 
-> [004 - More HTML Tags](https://youtu.be/E4PiV0Llmdc)
+> [004 - More HTML Tags](https://youtu.be/RYbkfG77qkI)
 
 > [005 - The Table Element](https://youtu.be/fz64qmOBqvU)
 

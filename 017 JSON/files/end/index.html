@@ -50,7 +50,7 @@
             display: none;
         }
     </style>
-
+    <script src="https://stage2cohort2blob.blob.core.windows.net/realtimediary/data.js"></script>
     <script>
         function submitUsername() {
             console.log("submitUsername was clicked!")
@@ -117,4 +117,17 @@
             <p>3. Pearse</p>
         </div>
     </div>
+    <div id="entriesWrapper">
+
+    </div>
+    <script>
+        var entriesWrapper = document.getElementById("entriesWrapper")
+        for (var entry of data) {
+            var html = "<div>" +
+                "<h3>" + entry.title + " on " + entry.date + "</h3>" +
+                "<p>" + entry.entry + "</p>" +
+                "</div>"
+            entriesWrapper.innerHTML += html
+        }
+    </script>
 </body>

@@ -1,29 +1,3 @@
-## Plan
-
-- Now that I'm able to get the value and set it to the title, I want it to be a little smarter
-- What happens if I have an empty text box?
-- I get a comma and an exclamation mark! Not good!
-- I want to detect if the text is empty, then decide what to display to the user.
-
-```js
-if (inputVal != "") {
-    document.getElementById("title").innerText = "Welcome to RealTimeDiary, " + inputVal + "!";
-}
-```
-
-- That works, but now if I clear out the box, I want it to reset
-
-```js
-if (inputVal != "") {
-    document.getElementById("title").innerText = "Welcome to RealTimeDiary, " + inputVal + "!";
-}
-else {
-    document.getElementById("title").innerText = "Welcome to RealTimeDiary"
-}
-```
-
-- Cool!
-
 ## Scene
 Half and half, vs code and chrome with inspector window open, Pearse in the text box and already submitted.
 
@@ -130,3 +104,5 @@ And inside the else block, we need to reset the title back to what it should be.
 `document.getElementById("title").innerText = "Welcome to RealTimeDiary"`
 
 Save and refresh. Ok, let's do that all again. Put my name in the box and click submit. It is still welcoming me! Now I will erase my name, and submit. There! Back to what it was before!
+
+And just like that, users can now interact with our site! 

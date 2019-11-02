@@ -8,11 +8,6 @@ Hello, and welcome to Stage Two: First Look at JavaScript. In this video, we wil
 
 JavaScript is the de-facto programming language on the web, and in my opinion is the complete opposite of C!
 
-<!-- https://techbeacon.com/app-dev-testing/javascript-vs-other-languages-live-long-prosper -->
-
-<!-- I don't think this is necessary -->
-<!-- Let me give you a few examples. Remember when you had to compile C before you can run it? JavaScript is interpreted by the browser, so no need to compile!  -->
-
 Let's look at how to use JavaScript using the building REPL in chrome. 
 
 https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop

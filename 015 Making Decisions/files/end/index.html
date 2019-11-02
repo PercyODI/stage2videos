@@ -33,19 +33,53 @@
 
         div {
             margin: 8px;
-            display: inline-block;
             white-space: nowrap;
         }
 
         .half {
+            display: inline-block;
             margin: 0px;
             width: 50%;
         }
+
+        .full {
+            width: 100%;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
+
+    <script>
+        function submitUsername() {
+            console.log("submitUsername was clicked!")
+            var inputVal = document.getElementsByName("username")[0].value
+            if (inputVal != "") {
+                document.getElementById("title").innerText = "Welcome to RealTimeDiary, " + inputVal + "!"
+            }
+            else {
+                document.getElementById("title").innerText = "Welcome to RealTimeDiary"
+            }
+
+            // if (inputVal != "") {
+            //     document.getElementById("title").innerText = "Welcome to RealTimeDiary, " + inputVal + "!";
+            // }
+            // else {
+            //     document.getElementById("title").innerText = "Welcome to RealTimeDiary"
+            // }
+        }
+    </script>
 </head>
 
 <body>
-    <h1>Welcome to RealTimeDiary</h1>
+    <h1 id="title">Welcome to RealTimeDiary</h1>
+    <div>
+        <label>Enter your name here:</label>
+        <input type="text" name="username">
+        <br>
+        <button onclick="submitUsername()">Submit</button>
+    </div>
     <div>
         <p>RealTimeDiary is where anyone can write their personal diaries, and view other's entries in real time! These
             diaries can be used for whatever you need! Status updates on your life, personal opinions and rants, or even

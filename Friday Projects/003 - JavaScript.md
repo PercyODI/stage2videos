@@ -13,7 +13,7 @@ We would like you to build a to-do app in HTML, CSS, and JavaScript! It needs to
     - Make it clear they are completed, such a strike-through or red!
 1. Make it look good!
     - Make good color choices
-    - Soften the corners so things are too sharp
+    - Soften the corners so things aren't too sharp
 1. Make it feel interactive! 
     - items should change when you hover over them!
 

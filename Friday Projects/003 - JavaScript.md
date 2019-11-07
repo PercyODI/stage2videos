@@ -57,6 +57,8 @@ Ok, with the To-Do application out of the way, we can return our focus back to G
 
 1. Add a section where users can put in new grills, and add them to the table
     - If the user doesn't give all the required data, feel free to `alert` them!
+    - Validate the user input. If it doesn't make sense (like a string instead of a number, or a value more than 5 stars), feel free to `alert` them, but don't put garbage data in the table!
+    - When a users successfully inputs a new grill, add it to the table, and clear out the input section so the user can input another grill!
 1. Dynamically load table from given external resource
     - Ratings should be in stars. Use a picture and dynamically load the correct number of them!
 1. The FAQ should only show the questions on page load. When a user clicks on a question, the answer should appear under it.

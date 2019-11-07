@@ -61,6 +61,7 @@ Ok, with the To-Do application out of the way, we can return our focus back to G
     - When a users successfully inputs a new grill, add it to the table, and clear out the input section so the user can input another grill!
 1. Dynamically load table from given external resource
     - Ratings should be in stars. Use a picture and dynamically load the correct number of them!
+    - Use this external resource: https://stage2cohort2blob.blob.core.windows.net/grillber/data_01.js
 1. The FAQ should only show the questions on page load. When a user clicks on a question, the answer should appear under it.
 1. Calculate total estimated cost for a grill
     - Users should be able to select a grill by clicking it

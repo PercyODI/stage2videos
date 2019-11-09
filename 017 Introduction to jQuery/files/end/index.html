@@ -1,0 +1,63 @@
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <h1 id="title">Welcome to RealTimeDiary</h1>
+    <div>
+        <label>Enter your name here:</label>
+        <input type="text" name="username">
+        <br>
+        <button onclick="submitUsername()">Submit</button>
+    </div>
+    <div>
+        <p>RealTimeDiary is where anyone can write their personal diaries, and view other's entries in real time! These
+            diaries can be used for whatever you need! Status updates on your life, personal opinions and rants, or even
+            traditional Dear Diary entries! This diary is whatever <strong>you</strong> make it!</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <td><strong>Entry</strong></td>
+                    <td><strong>Date</strong></td>
+                    <td><strong>User</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>My First Entry</td>
+                    <td>10/20/2019</td>
+                    <td>Pearse</td>
+                </tr>
+                <tr>
+                    <td>Why are Rabbits so CUTE?!!</td>
+                    <td>10/20/2019</td>
+                    <td>Laura</td>
+                </tr>
+                <tr>
+                    <td>Pokemon is the best game, a dissertation</td>
+                    <td>10/21/2019</td>
+                    <td>Garrett</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="half">
+            <h3>Top Three Entries</h3>
+            <p>1. Why are Rabbits so CUTE?!</p>
+            <p>2. 12 Ways to write CSS</p>
+            <p>3. You won't believe what happens next!</p>
+        </div>
+        <div class="half">
+            <h3>Top Three Users</h3>
+            <p>1. Laura</p>
+            <p>2. Garrett</p>
+            <p>3. Pearse</p>
+        </div>
+    </div>
+    <div id="entriesWrapper">
+
+    </div>
+    
+    <script src='main.js'></script>
+</body>

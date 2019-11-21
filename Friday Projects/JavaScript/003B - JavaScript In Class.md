@@ -70,3 +70,83 @@ Note where the taskId goes. It is appended to the end of the address. This is im
 
 ---
 
+Ok, the next step is to use this data on a web app. Together, we are going to start a Todo app, where we can see tasks, and mark them complete or incomplete. 
+
+The first step is to get the list of tasks from the REST application. For this, we will use AJAX, which is how we get data after a page has been loaded. Ajax in vanilla javascript is one of the worst things imaginable, so we will be using a JavaScript library to make it extremely simple!
+
+This library is called jQuery. https://jquery.com/
+
+jQuery is extremely powerful, not only allowing us to make ajax simple, but makes DOM manipulation easier as well as providing cross browser compatibility. Also, it is completely free!
+
+First, we need to tell our page to reference jQuery. Luckily, jQuery also provides a CDN for us to use. https://code.jquery.com/
+
+We want jQuery 3.x minified. Minification is the process of taking a javascript file, and reducing it as much as possible by changing things like variable and function names to single characters, removing all white-space, and other space saving techniques. It makes it extremely hard for a human to read, but is much smaller to send across the internet.
+
+We'll copy the script tag from the pop-up. The important part here is the src attribute. We will keep the integrity and crossorigin, but they are not needed.
+
+We'll paste the script tag before our main.js reference. That way main.js can use the jQuery library.
+
+Excellent. Now, in main.js, we will access the jQuery library by using the magic variable `$`. Why $? Good question, but I don't know why. But it is now well known as the jQuery variable.
+
+So, we'll type $, dot, then we want to make an ajax request. Easy, we'll use the ajax method!
+
+`$.ajax("https://grillberc2.azurewebsites.net/api/Tasks")`
+
+This simply means to call the url that was passed it. Excellent! This should get all of the tasks from the REST API. But now we have to deal with async methods. So far, you have only ever used synchronous methods, which means that the whole method runs and returns the data before the program goes on. With async methods, we start the method, go on and do something else, and then tell the method what to do when it completes. 
+
+Ajax is async because we have to wait for the call to be made down the network, to the server, the app has to receive the network call, process the request, send it back down the network, then our app has to do something with the data that comes back. If this wasn't async, the whole browser would freeze while all this was happening!
+
+Luckily, the jQuery ajax method returns a promise, which allows us to add chain a function that needs to run once the promise (in this case the network call) is done. This method is called done. So, after the ajax method, we will add a dot done. The done method expects a function that it will call when it is done. The done method will pass the data it receives to this function, but we can name it whatever we want.
+
+```js
+$.ajax("https://grillberc2.azurewebsites.net/api/Tasks")
+  .done(function (data) {
+    console.dir(data)
+  };
+```
+
+Let's run the page, and check the console to see what happens. There, we can see the same thing we saw in the swagger page. and array of objects, which are the tasks we need to show. However, you'll notice that the JSON blob automatically turned into javascript objects. Pretty cool!
+
+Ok, now we want to do something with this data. Let's make a div tag, giving it an id of dataDropLoc. Then, we will for loop over every task in the array. Then we will set a variable to a virtual node using jQuery. `$("<p>")` This will create a virtual p element. Then, let's set the text as the TaskBody `elem.text(task.TaskBody)`. Then, let's append this virtual element to the div we made. `dataDropLoc.append(elem)`. Appending the virtual node to a real DOM element will make it real.
+
+```js
+$.ajax("https://grillberc2.azurewebsites.net/api/Tasks")
+  .done(function (data) {
+    console.dir(data)
+    var dataDropLoc = $("#dataDropLoc");
+    dataDropLoc.empty();
+    for (var task of data) {
+      let elem = $("<p>");
+      elem.text(task.TaskBody);
+      elem.data("taskId", task.Id)
+      dataDropLoc.append(elem);
+    }
+  };
+```
+
+Awesome! Ok, now I want you to also put the name of the User the task is assigned to next to the TaskBody. Remember, there is a whole set of endpoints on that swagger page that we didn't look at!
+
+
+---
+
+Ok, Next thing is to let users create their own tasks. For this, we will use an alternative parameter to the ajax method. We'll pass it an object with the settings we want to set. 
+
+```js
+function createNewTask() {
+    console.dir($("#newTaskBody").text())
+    $.ajax({
+        url: "https://grillberc2.azurewebsites.net/api/Tasks/",
+        method: "POST",
+        data: {
+            "UserId": $("#selectedUserName").children("option:selected").val(),
+            "TaskBody": $("#newTaskBody").val()
+        }
+    }).done(function (newTaskData) {
+        GetAndReplaceTasks();
+    });
+}
+```
+
+The method has to be POST, because that is the HTTP Action we use to create a new resource. The url is the same. And the data is an object that the REST API is expecting to make this new task. And again, we have the done function, which if you remember will get the task that was created.
+
+However, you'll notice that we need a valid user id to create a new task. We will use a select element (which is just a drop down list), but we need to populate it with all the options available (which are all the users available on the REST API). Your next task is to get all the users, create all the option elements inside the select element (with the username as the text in the option, and the userid as the value).

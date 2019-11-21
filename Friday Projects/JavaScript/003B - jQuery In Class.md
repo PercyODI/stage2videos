@@ -22,7 +22,7 @@ This is a swagger page, which is just a nice UI on top of my REST API. It also a
 
 Let's look at Tasks. In our application, these tasks are like ToDo items. They are assigned to a user, and have some dates associated with them, as well as the test of the task.
 
-Let's click Tasks, Then look for the GET `/api/Tasks`. Click it to open it up.
+Let's click Tasks, Then look for the GET `/api/v1/Tasks`. Click it to open it up.
 
 Inside, we can see the example model that will be output. This is not real data, but shows us the shape of the expected data. You can see that it is an array, of objects, with an Id, UserId, TaskBody, CreatedDate, CompletedDate, and IsCompleted.
 
@@ -30,13 +30,13 @@ Let's click `Try it out!`
 
 This is actually going to make the REST call, and show us what it returns! You can see we have several tasks in this array. Each task has a unique id (called a GUID or UUID). This is how we can reference a specific task.
 
-If I don't want all the tasks, but only a specific task, I would use the other GET endpoint. Let's copy an Id, and open the GET `/api/Tasks/{taskId}`. Here we can see that the example value is not an array, but just one object. Let's paste the id in the taskId parameter.
+If I don't want all the tasks, but only a specific task, I would use the other GET endpoint. Let's copy an Id, and open the GET `/api/v1/Tasks/{taskId}`. Here we can see that the example value is not an array, but just one object. Let's paste the id in the taskId parameter.
 
 Now we have just the one task object, with a ton of data about it!
 
 Ok, what if I want to create a new task? In REST, you use the HTTP Action GET to get a record from the application. To create a new record, we use the HTTP Action POST.
 
-Let's open the POST `/api/Tasks` section. Here, we see that the parameter newTask is required. This parameter is a full JSON blob. To the right of the textbox is an example value. This is a sample object in the shape that the application is expecting. Click the yellow box to copy the JSON blob to the textbox.
+Let's open the POST `/api/v1/Tasks` section. Here, we see that the parameter newTask is required. This parameter is a full JSON blob. To the right of the textbox is an example value. This is a sample object in the shape that the application is expecting. Click the yellow box to copy the JSON blob to the textbox.
 
 If we tried sending this, we get a response code of 400. Different response codes have different meanings in REST.
 
@@ -96,7 +96,7 @@ Excellent. Now, in main.js, we will access the jQuery library by using the magic
 
 So, we'll type $, dot, then we want to make an ajax request. Easy, we'll use the ajax method!
 
-`$.ajax("https://grillberc2.azurewebsites.net/api/Tasks")`
+`$.ajax("https://grillberc2.azurewebsites.net/api/v1/Tasks")`
 
 This simply means to call the url that was passed it. Excellent! This should get all of the tasks from the REST API. But now we have to deal with async methods. So far, you have only ever used synchronous methods, which means that the whole method runs and returns the data before the program goes on. With async methods, we start the method, go on and do something else, and then tell the method what to do when it completes. 
 
@@ -105,7 +105,7 @@ Ajax is async because we have to wait for the call to be made down the network, 
 Luckily, the jQuery ajax method returns a promise, which allows us to add chain a function that needs to run once the promise (in this case the network call) is done. This method is called done. So, after the ajax method, we will add a dot done. The done method expects a function that it will call when it is done. The done method will pass the data it receives to this function, but we can name it whatever we want.
 
 ```js
-$.ajax("https://grillberc2.azurewebsites.net/api/Tasks")
+$.ajax("https://grillberc2.azurewebsites.net/api/v1/Tasks")
   .done(function (data) {
     console.dir(data)
   };
@@ -116,7 +116,7 @@ Let's run the page, and check the console to see what happens. There, we can see
 Ok, now we want to do something with this data. Let's make a div tag, giving it an id of dataDropLoc. Then, we will for loop over every task in the array. Then we will set a variable to a virtual node using jQuery. `$("<p>")` This will create a virtual p element. Then, let's set the text as the TaskBody `elem.text(task.TaskBody)`. Then, let's append this virtual element to the div we made. `dataDropLoc.append(elem)`. Appending the virtual node to a real DOM element will make it real.
 
 ```js
-$.ajax("https://grillberc2.azurewebsites.net/api/Tasks")
+$.ajax("https://grillberc2.azurewebsites.net/api/v1/Tasks")
   .done(function (data) {
     console.dir(data)
     var dataDropLoc = $("#dataDropLoc");

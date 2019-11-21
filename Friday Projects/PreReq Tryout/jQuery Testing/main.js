@@ -1,6 +1,6 @@
 // Define functions
 function GetAndReplaceTasks() {
-    $.ajax("https://grillberc2.azurewebsites.net/api/Tasks")
+    $.ajax("https://grillberc2.azurewebsites.net/api/v1/Tasks")
         .done(function (data) {
             var dataDropLoc = $("#dataDropLoc");
             dataDropLoc.empty();
@@ -11,7 +11,7 @@ function GetAndReplaceTasks() {
                 dataDropLoc.append(elem);
 
                 // Now get the user
-                $.ajax("https://grillberc2.azurewebsites.net/api/Users/" + task.UserId)
+                $.ajax("https://grillberc2.azurewebsites.net/api/v1/Users/" + task.UserId)
                     .done(function (getUserData) {
                         elem.append(" for " + getUserData.Username);
                     })
@@ -22,7 +22,7 @@ function GetAndReplaceTasks() {
 function createNewTask() {
     console.dir($("#newTaskBody").text())
     $.ajax({
-        url: "https://grillberc2.azurewebsites.net/api/Tasks/",
+        url: "https://grillberc2.azurewebsites.net/api/v1/Tasks/",
         method: "POST",
         data: {
             "UserId": $("#selectedUserName").children("option:selected").val(),
@@ -30,6 +30,8 @@ function createNewTask() {
         }
     }).done(function (newTaskData) {
         GetAndReplaceTasks();
+    }).fail(function(xhr){
+        alert(xhr.responseJSON.Message);
     });
 }
 
@@ -38,7 +40,7 @@ $(function () {
     // Get initial data
     GetAndReplaceTasks();
 
-    $.ajax("https://grillberc2.azurewebsites.net/api/Users/")
+    $.ajax("https://grillberc2.azurewebsites.net/api/v1/Users/")
         .done(function (getAllUsersData) {
             var dropDownElem = $("#selectedUserName");
             dropDownElem.empty();

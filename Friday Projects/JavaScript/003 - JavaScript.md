@@ -38,6 +38,7 @@ We would like you to build a to-do app in HTML, CSS, and JavaScript! It needs to
 1. Allow users to complete an incomplete to-do item
 1. Allow users to un-complete a completed to-do item
 1. Allow users to delete any to-do item
+1. Allow users to create a new user 
 1. All actions should be done through the API, so changes are persisted.
 1. Show the list of items left to do
 1. Show the list of items that have been completed

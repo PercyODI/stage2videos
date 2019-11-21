@@ -1,22 +1,7 @@
-GetAndReplaceTasks();
-
-$.ajax("https://grillberc2.azurewebsites.net/api/Users/")
-    .done(function (getAllUsersData) {
-        var dropDownElem = $("#selectedUserName");
-        dropDownElem.empty();
-        console.dir(getAllUsersData);
-        for (let user of getAllUsersData) {
-            let newDropDownOption = $("<option>");
-            newDropDownOption.text(user.Username);
-            newDropDownOption.attr("value", user.Id)
-            dropDownElem.append(newDropDownOption);
-        }
-    })
-
+// Define functions
 function GetAndReplaceTasks() {
     $.ajax("https://grillberc2.azurewebsites.net/api/Tasks")
         .done(function (data) {
-            console.dir(data)
             var dataDropLoc = $("#dataDropLoc");
             dataDropLoc.empty();
             for (var task of data) {
@@ -28,13 +13,11 @@ function GetAndReplaceTasks() {
                 // Now get the user
                 $.ajax("https://grillberc2.azurewebsites.net/api/Users/" + task.UserId)
                     .done(function (getUserData) {
-                        console.dir(getUserData)
                         elem.append(" for " + getUserData.Username);
                     })
             }
-        })
+        });
 }
-
 
 function createNewTask() {
     console.dir($("#newTaskBody").text())
@@ -49,3 +32,24 @@ function createNewTask() {
         GetAndReplaceTasks();
     });
 }
+
+// Function to run on Document Ready
+$(function () {
+    // Get initial data
+    GetAndReplaceTasks();
+
+    $.ajax("https://grillberc2.azurewebsites.net/api/Users/")
+        .done(function (getAllUsersData) {
+            var dropDownElem = $("#selectedUserName");
+            dropDownElem.empty();
+            for (let user of getAllUsersData) {
+                let newDropDownOption = $("<option>");
+                newDropDownOption.text(user.Username);
+                newDropDownOption.attr("value", user.Id)
+                dropDownElem.append(newDropDownOption);
+            }
+        })
+
+    // Attach events to initial dom
+    $("#newTaskBtn").click(createNewTask);
+});

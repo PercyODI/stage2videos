@@ -35,9 +35,12 @@ There are a lot of things happening at GrillBer, and your work is really pushing
 We would like you to build a to-do app in HTML, CSS, and JavaScript! It needs to do the following things:
 
 1. Allow users to input a new to-do item
-1. Allow users to remove a completed to-do item
-1. Show a list of items in the order they were input
-1. Under the list of items left to do, completed items should be shown in the order they were completed
+1. Allow users to complete an incomplete to-do item
+1. Allow users to un-complete a completed to-do item
+1. Allow users to delete any to-do item
+1. All actions should be done through the API, so changes are persisted.
+1. Show the list of items left to do
+1. Show the list of items that have been completed
     - Make it clear they are completed, such as a strike-through or red!
 1. Make it look good!
     - Make good color choices

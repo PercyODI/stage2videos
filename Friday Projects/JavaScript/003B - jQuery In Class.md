@@ -54,6 +54,10 @@ There! Now we have a 200 response, and the response body has a task object. You'
 
 If we get all tasks again, we will see that our new task now shows up in that list!
 
+Now it's your turn to try adding a new task.
+
+---
+
 Ok, last thing. Let's update a task. In REST, to update a record we use the HTTP Action PUT. Let's copy the task id for our newly created record and open the PUT `/api/Tasks/{taskId}`
 
 Now there are two parameters: taskId and updatedTask. Let's paste in the taskId, and click the yellow example value.
@@ -67,6 +71,8 @@ Let's change a different property. I want to complete the task, and I can do tha
 Notice that the application updates the flag, and sets the CompletedDate for me!
 
 Note where the taskId goes. It is appended to the end of the address. This is important when we build these requests ourselves
+
+Now it's your turn. You need to update the task that you made and assign it to yourself.
 
 ---
 
@@ -116,7 +122,7 @@ $.ajax("https://grillberc2.azurewebsites.net/api/Tasks")
     var dataDropLoc = $("#dataDropLoc");
     dataDropLoc.empty();
     for (var task of data) {
-      let elem = $("<p>");
+      var elem = $("<p>");
       elem.text(task.TaskBody);
       elem.data("taskId", task.Id)
       dataDropLoc.append(elem);
@@ -124,8 +130,7 @@ $.ajax("https://grillberc2.azurewebsites.net/api/Tasks")
   };
 ```
 
-Awesome! Ok, now I want you to also put the name of the User the task is assigned to next to the TaskBody. Remember, there is a whole set of endpoints on that swagger page that we didn't look at!
-
+Awesome! Ok, now I want you to also put the name of the User the task is assigned to next to the TaskBody.
 
 ---
 
@@ -133,12 +138,11 @@ Ok, Next thing is to let users create their own tasks. For this, we will use an 
 
 ```js
 function createNewTask() {
-    console.dir($("#newTaskBody").text())
     $.ajax({
         url: "https://grillberc2.azurewebsites.net/api/Tasks/",
         method: "POST",
         data: {
-            "UserId": $("#selectedUserName").children("option:selected").val(),
+            "UserId": "hard coded user id here",
             "TaskBody": $("#newTaskBody").val()
         }
     }).done(function (newTaskData) {
@@ -149,4 +153,10 @@ function createNewTask() {
 
 The method has to be POST, because that is the HTTP Action we use to create a new resource. The url is the same. And the data is an object that the REST API is expecting to make this new task. And again, we have the done function, which if you remember will get the task that was created.
 
-However, you'll notice that we need a valid user id to create a new task. We will use a select element (which is just a drop down list), but we need to populate it with all the options available (which are all the users available on the REST API). Your next task is to get all the users, create all the option elements inside the select element (with the username as the text in the option, and the userid as the value).
+However, you'll notice that we need a valid user id to create a new task. We will use a select element (which is just a drop down list), but we need to populate it with all the options available (which are all the users available on the REST API). 
+
+Your next task is to get all the users, create all the option elements inside the select element (with the username as the text in the option, and the UserId as the value), and then use the selected option in the data of the createNewTask();
+
+---
+
+Ok, now it's time for you to go on your own! Finish out the ToDo app on your own, using what we have worked on together as a jumping off point!

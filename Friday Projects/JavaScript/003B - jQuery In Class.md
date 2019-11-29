@@ -108,7 +108,7 @@ Luckily, the jQuery ajax method returns a promise, which allows us to add chain 
 $.ajax("https://grillberc2.azurewebsites.net/api/v1/Tasks")
   .done(function (data) {
     console.dir(data)
-  };
+  });
 ```
 
 Let's run the page, and check the console to see what happens. There, we can see the same thing we saw in the swagger page. and array of objects, which are the tasks we need to show. However, you'll notice that the JSON blob automatically turned into javascript objects. Pretty cool!
@@ -127,7 +127,7 @@ $.ajax("https://grillberc2.azurewebsites.net/api/v1/Tasks")
       elem.data("taskId", task.Id)
       dataDropLoc.append(elem);
     }
-  };
+  });
 ```
 
 Awesome! Ok, now I want you to also put the name of the User the task is assigned to next to the TaskBody.
@@ -142,7 +142,7 @@ function createNewTask() {
         url: "https://grillberc2.azurewebsites.net/api/Tasks/",
         method: "POST",
         data: {
-            "UserId": "hard coded user id here",
+            "UserId": "hard coded user id here",  
             "TaskBody": $("#newTaskBody").val()
         }
     }).done(function (newTaskData) {
@@ -160,3 +160,5 @@ Your next task is to get all the users, create all the option elements inside th
 ---
 
 Ok, now it's time for you to go on your own! Finish out the ToDo app on your own, using what we have worked on together as a jumping off point!
+
+https://github.com/PercyODI/stage2_public/blob/master/003%20-%20JavaScript.md

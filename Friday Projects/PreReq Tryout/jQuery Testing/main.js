@@ -13,7 +13,7 @@ function GetAndReplaceTasks() {
                 // Now get the user
                 $.ajax("https://grillberc2.azurewebsites.net/api/v1/Users/" + task.UserId)
                     .done(function (getUserData) {
-                        elem.append(" for " + getUserData.Username);
+                        elem.append(" for " + getUserData.FirstName + " " + getUserData.LastName);
                     })
             }
         });

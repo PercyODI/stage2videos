@@ -1,0 +1,31 @@
+{
+    "Title": "Basic Grill Quiz",
+    "Questions": [
+        {
+            "Type": "MultipleChoice",
+            "Question": "Which of the following is the correct definition of a grill?",
+            "PossibleAnswers": [
+                "A metal framework used for cooking food over an open fire.",
+                "A device for recording visual images in the form of photographs, film, or video signals.",
+                "A wipeable board with a white surface used for teaching or presentations.",
+                "The star around which the earth orbits."
+            ],
+            "CorrectAnswer": 0
+        },
+        {
+            "Type": "TrueOrFalse",
+            "Question": "A smoker is a type of grill.",
+            "CorrectAnswer": true
+        },
+        {
+            "Type": "TrueOrFalse",
+            "Question": "The most popular utensil among grill owners is a long-handled spatula.",
+            "CorrectAnswer": false
+        },
+        {
+            "Type": "FillInTheBlank",
+            "Question": "In 2009, competitive eating champion Joey Chestnut ate __ hot dogs with buns in 10 minutes!",
+            "CorrectAnswer": "68"
+        }
+    ]
+}

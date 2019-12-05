@@ -6,43 +6,11 @@ https://www.youtube.com/watch?v=gfkTfcpWqAY - C# Tutorial For Beginners - Learn 
 Cool things:
 - https://wpuploads.azureedge.net/2016/08/LearnCSharpSimpleRPG_2ndEd.pdf
 
-Hey @channel!
-
-I hope everyone had a great Thanksgiving! I wanted to drop three things for you all! At a bare minimum, you will need to install Visual Studio 2017 before next Friday (unless you want to sit and watch 7 gigs download on the WiFi during class)
-
-1. I hope everyone is still working on the ToDo app, and honing your JavaScript and jQuery skills!
-2. You need to install Visual Studio 2017 (See instructions below)
-  - If you have any issues installing VS 2017, please reach out to me ASAP so we can get it working!
-3. Watch this intro video to C# from Mosh: https://www.youtube.com/watch?v=gfkTfcpWqAY
-  - This is an hour long video, but is multiple lessons all compiled into one video.
-  - Feel free to split this video up over the week!
-
-## Installing Visual Studio 2017
-We will be using Visual Studio 2017 to learn and build C# applications. There is a 2019 version out there, but it is more unstable, where 2017 has a much stronger track record. 
-
-Steps:
-- Go to think link: https://my.visualstudio.com/Downloads?q=visual%20studio%202017&wt.mc_id=o~msft~vscom~older-downloads
-- Click "Sign in with GitHub"
-- Sign in with your GitHub credentials
-- Click the green "Authorize Microsoft-corp" button
-- Click the checkbox on the left for "Visual Studio 2017 (version 15.9)
-- Find the text "Visual Studio Community 2017 (Version 15.9)", and click Download
-- Run the exe file 
-- Click Continue
-- This will install the installer (You have to install the installer and use the installer to install Visual Studio)
-- After the installer is installed, you should be brought to a page with Workloads to install. Check the following workloads:
-  - .NET desktop development
-  - ASP.NET and web development
-  - .NET Core cross-platform development
-- You will notice that you will need to download a lot! When I tried this, I had to download 7.78 Gigabytes.
-- Click install, and wait
-
-
-QuizBer
+## QuizBer
 
 A console app based quiz developed by the GrillBer team. 
 
-Goals: 
+## Goals: 
 
 1. Learn C#
 1. Learn about objects/classes
@@ -51,7 +19,7 @@ Goals:
 1. Learn about generics (basic generics for collections)
 1. Learn about Newtonsoft and File access
 
-Lecture:
+## Lecture:
 
 1. Create Console App
 1. Display quiz title
@@ -716,3 +684,8 @@ public override bool AttemptAnswer(List<string> attemptedAnswer)
 > New Requirement! We want to support a multiple choice question type, where a question is asked, a selection of possible answers are displayed in random order, and the user must select the correct one!
 
 > New Requirement! We want to support multiple choice questions where the user needs to select all the correct answers (0 to all of possible answers).
+
+Homework:
+Start reading through this PDF. By no means do you need to read it cover to cover by next week, but take chunks of time to go through it and follow along with the exercises. It will help reinforce some of the concepts we went over today, and give you a different point of view than just mine!
+
+[C# 2019 Refresh](.\CSharp+Book+2019+Refresh.pdf)

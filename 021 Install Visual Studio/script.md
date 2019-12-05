@@ -688,4 +688,4 @@ public override bool AttemptAnswer(List<string> attemptedAnswer)
 Homework:
 Start reading through this PDF. By no means do you need to read it cover to cover by next week, but take chunks of time to go through it and follow along with the exercises. It will help reinforce some of the concepts we went over today, and give you a different point of view than just mine!
 
-[C# 2019 Refresh](.\CSharp+Book+2019+Refresh.pdf)
+[C# 2019 Refresh](CSharp+Book+2019+Refresh.pdf)

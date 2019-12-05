@@ -368,3 +368,351 @@ public class FillInTheBlankQuestion : Question
     }
 }
 ```
+
+Let's try playing the quiz now. Everything looks good, but let's pause on the last question (the Fill in the blank question). The question is right, and it does except the answer, but at the top it says True or False Question! That's not right!
+
+Looking back at our code, we can see that this is because we hard-coded the question type string. Let's move that responsibility to the question object itself.
+
+> Using what you know, move the question type display to be part of the question
+
+Ok! We have a working application that works for both True/False Questions and FillInTheBlank questions! 
+
+A new requirement has come in to support Order questions. This new question type needs to be able to list several things in a random order, and the user has to type the corresponding numbers in order. Yikes!
+
+Eventually, it will look something like this:
+
+```
+Order Question
+
+Put the following items in chronological order:
+
+1. The outdoor gas grill was invented
+2. George Foreman grill invented
+3. Humans discover fire
+-----------------------------------------------
+
+>> 3
+>> 1
+>> 2
+
+That is Correct!
+```
+
+> - Let's see how far we can get with what we have! Create the order question type and fill it with as much as you can!
+>  - Also, add the sample question to the list of questions in our quiz
+
+So there are a couple of behaviors missing that keep us from doing this order right.
+
+1. The question needs to control how the question is output
+1. The question needs to control how answers are collected (in case of the order, multiple inputs are required)
+
+We also need to keep in mind the concept of Separation of Concerns. 
+
+https://en.wikipedia.org/wiki/Separation_of_concerns
+
+In our case, a question should not be concerned with how the display works! That means it should use Console.WriteLine() or Console.ReadLine(). The program class is responsible for and is concerned with the display, but uses the questions to build the display, because it is not concerned with what questions are or how they work.
+
+Here is were I'm starting from.
+
+```cs
+public class OrderQuestion : Question
+{
+    public override string QuestionTypeDisplay { get; } = "Order Question";
+    public string[] AnswersInOrder { get; set; }
+    public override bool AttemptAnswer(string attemptedAnswer)
+    {
+        throw new NotImplementedException();
+    }
+}
+```
+
+The order question defines an array that are the answers in the order they should be. Then when I make the class, it looks like this:
+
+```cs
+var questionFour = new OrderQuestion()
+{
+    QuestionString = "Put the following items in chronological order",
+    AnswersInOrder = new []
+    {
+        "Humans discover fire",
+        "The outdoor gas grill was invented",
+        "George Foreman grill invented"
+    }
+};
+quizQuestions.Add(questionFour);
+```
+
+Now I have the question string, and the answers in the required order. But the requirement was to display the answers in a random order.
+
+Let's think about how we can store the answers. Sounds like we need three pieces of information about each answer:
+
+1. The correct order index
+2. A random order index
+3. The answer itself.
+
+Let's make a new class that is only used by the OrderQuestion: an OrderQuestionAnswer class
+
+```cs
+public class OrderQuestion : Question
+{
+    private class OrderQuestionAnswer
+    {
+        public int CorrectOrder { get; set; }
+        public int RandomOrder { get; set; }
+        public string AnswerString { get; set; }
+    }
+```
+
+This class is currently what we call a property bag: it doesn't have any behavior, but rather just holds a lot of properties that we need to track.
+
+You'll also notice that I have used a different accessability modifier for this class. This time it is private. This means that only the OrderQuestion class can use the OrderQuestionAnswer. This makes sense, since no one else should be using this class.
+
+I'm also going to change the AnswersInOrder property to be a list of OrderQuestionAnswer's
+
+```cs
+private List<OrderQuestionAnswer> OrderQuestionAnswers { get; set; } = new List<OrderQuestionAnswer>();
+```
+
+You'll notice that we also have to make this property private, because it uses a private class in it. This is fine: No one but the OrderQuestion should be doing anything with this list.
+
+This presents a challenge though: How does the Program class give the OrderQuestion the answers if that property is private?
+
+The answer is through a constructor! A constructor is just a method that defines how to build the object. A Constructor is a public method of the same name as the class itself. So, we could make a constructor as follows:
+
+```cs
+public OrderQuestion(List<string> answersInOrder)
+{
+
+}
+```
+
+Now users can create a list of the answers, and the OrderQuestion will handle all of the randomness and storage!
+
+Then Program class can create a new OrderQuestion like so:
+
+```cs
+var questionFour = new OrderQuestion(new string[]
+{
+    "Humans discover fire",
+    "The outdoor gas grill was invented",
+    "George Foreman grill invented"
+})
+{
+    QuestionString = "Put the following items in chronological order"
+};
+quizQuestions.Add(questionFour);
+```
+
+So how do we build the OrderQuestionAnswers from the given answersInOrder? Copy this bit of code into the constructor:
+
+```cs
+public OrderQuestion(string[] answersInOrder)
+{
+    var rand = new Random();
+
+    for(var i = 0; i < answersInOrder.Length; i++)
+    {
+        var newOrderQuestionAnswer = new OrderQuestionAnswer()
+        {
+            AnswerString = answersInOrder[i],
+            CorrectOrder = i + 1,
+            RandomOrder = rand.Next()
+        };
+        OrderQuestionAnswers.Add(newOrderQuestionAnswer);
+    }
+
+    OrderQuestionAnswers = OrderQuestionAnswers.OrderBy(oqa => oqa.RandomOrder).ToList();
+
+    for (int i = 0; i < OrderQuestionAnswers.Count(); i++)
+    {
+        OrderQuestionAnswers[i].RandomOrder = i + 1;
+    }
+}
+```
+
+Let's step through this line by line. First, we make a new Random class. This is the standard Random number generator that comes from .NET.
+
+Then we loop through each answer, making a new OrderQuestionAnswer, setting the answer string and the correctOrder, and then picking a random number as it's random order.
+
+Then we sort the list by that random order.
+
+Then we reset the random order to its new order in the list.
+
+---
+
+If we run the program now, we can set a breakpoint after question four has been created, and look inside it to see the list of answers, in their random orders and their correct orders!
+
+Now that we have list of the possible answers, we need to display them.
+
+Let's add a new method to the OrderQuestion class called `DisplayQuestion`, and have it return an array of strings. 
+
+Why an array? Remember that questions can't care about how to display things, only what to display. We will return all the strings, and let the program class manage displaying them to the console.
+
+First we want to display the question string, an empty line, and then for each OrderQuestionAnswers, build a new list from the random order property and the AnswerString property.
+
+```cs
+public List<string> DisplayQuestion()
+{
+    var retList = new List<string>
+    {
+        QuestionString,
+        string.Empty
+    };
+
+    foreach (var orderQuestionAnswer in OrderQuestionAnswers)
+    {
+        retList.Add($"{orderQuestionAnswer.RandomOrder}. {orderQuestionAnswer.AnswerString}");
+    }
+
+    return retList;
+}
+```
+
+Cool! Much more control of the display. Let's go back to the Program class, and tell it to use the DisplayQuestion method.
+
+I'll try something like this:
+
+```cs
+ foreach (var question in quizQuestions)
+{
+    Console.Clear();
+    Console.WriteLine(question.DisplayQuestion());
+```
+
+> Why doesn't Visual Studio like the DisplayQuestion method?
+
+DisplayQuestion only exists on the OrderQuestion class, but here in Program class, we only know that is a question, not what kind of question. 
+
+> What would we need to do to make this available at this level?
+
+DisplayQuestion needs to be accessible for all Questions, not just OrderQuestion.
+
+> Make DisplayQuestion work for all question types!
+
+```cs
+public abstract class Question
+{
+    public abstract string QuestionTypeDisplay { get; }
+    public string QuestionString { get; set; }
+    public abstract bool AttemptAnswer(string attemptedAnswer);
+
+    public virtual List<string> DisplayQuestion()
+    {
+        return new List<string>()
+        {
+            QuestionString
+        };
+    }
+}
+```
+
+I used a new keyword in the abstract class: virtual. A virtual method is a method with a default behavior, but a child class can override it if they want. This way the regular classes can rely on the default, and only the special classes can define their special behavior.
+
+---
+
+Ok, we're displaying the question correctly now! The next step is handling the answers.
+
+The first step is to give the Program class a way of know how many user inputs it needs to accept. This can simply be a int property on the question class for the Number of Required Answers. Lets add that property to the Question class
+
+```cs
+public abstract class Question
+{
+    public abstract string QuestionTypeDisplay { get; }
+    public string QuestionString { get; set; }
+    public abstract bool AttemptAnswer(string attemptedAnswer);
+    public int NumRequiredAnswers { get; set; } = 1;
+
+    public virtual List<string> DisplayQuestion()
+    {
+        return new List<string>()
+        {
+            QuestionString
+        };
+    }
+}
+```
+
+You'll see that I am setting a default number on the Question class. Just like the default DisplayQuestion method, I'm setting the default to be one, since most question types only want one answer, but gives the question the ability to override it.
+
+To override it in the OrderQuestion, I'll just set it in the constructor after I've built the OrderQuestionAnswers list.
+
+```cs
+NumRequiredAnswers = OrderQuestionAnswers.Count();
+```
+
+Back in Program class, we will make a for loop and use a console read line for every required answer.
+
+```cs
+for (var i = 0; i < question.NumRequiredAnswers; i++)
+{
+    Console.Write(">> ");
+    var response = Console.ReadLine();
+}
+```
+
+
+You'll notice that now the response variable is out of scope after the for loop. We need to expand a few things to allow for an list of answers, instead of assuming there will only be one. Let's make a list, save all the responses to the list, then pass that into the AttemptAnswer method.
+
+```cs
+var listOfResponses = new List<string>();
+for (var i = 0; i < question.NumRequiredAnswers; i++)
+{
+    Console.Write(">> ");
+    listOfResponses.Add(Console.ReadLine());
+}
+
+Console.WriteLine();
+if (question.AttemptAnswer(listOfResponses))
+{
+    Console.WriteLine("That is Correct!");
+}
+else
+{
+    Console.WriteLine("Sorry, that is incorrect.");
+}
+```
+
+Ok, this makes sense, but AttemptAnswer doesn't like it.
+
+> Modify the Question class and children classes to support the list of responses
+
+```cs
+public abstract class Question
+{
+    public abstract string QuestionTypeDisplay { get; }
+    public string QuestionString { get; set; }
+    public abstract bool AttemptAnswer(List<string> attemptedAnswer);
+    public int NumRequiredAnswers { get; set; } = 1;
+
+    public virtual List<string> DisplayQuestion()
+    {
+        return new List<string>()
+        {
+            QuestionString
+        };
+    }
+}
+```
+
+> This includes making the OrderQuestion return the correct response to AttemptAnswer.
+
+```cs
+// OrderQuestion class.
+public override bool AttemptAnswer(List<string> attemptedAnswer)
+{
+    for(var i = 0; i < attemptedAnswer.Count(); i++)
+    {
+        var orderQuestionAnswer = OrderQuestionAnswers[int.Parse(attemptedAnswer[i]) - 1];
+        if (orderQuestionAnswer.CorrectOrder != i + 1)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+```
+
+> New Requirement! We want to support a multiple choice question type, where a question is asked, a selection of possible answers are displayed in random order, and the user must select the correct one!
+
+> New Requirement! We want to support multiple choice questions where the user needs to select all the correct answers (0 to all of possible answers).
